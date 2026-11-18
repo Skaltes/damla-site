@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b2a4a">
+<meta name="robots" content="noindex,nofollow">
+<meta name="author" content="Caner Yaşayan">
+<title>Nevinay</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Nevinay">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--bg:#0b2a4a;--bg2:#0e4a7a;--card:#ffffff14;--line:#ffffff26;--acc:#4dd0ff;--acc2:#2f8cff;--text:#eaf6ff;--mut:#9fc4e0;--ok:#5be39b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--text);background:linear-gradient(180deg,var(--bg2),var(--bg) 60%) fixed;padding:env(safe-area-inset-top) 16px 96px}
+.wrap{max-width:520px;margin:0 auto}
+h1{text-align:center;font-size:26px;margin:18px 0 2px}
+.sub{text-align:center;color:var(--mut);margin:0 0 10px;font-size:14px}
+.hide{display:none!important}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-top:12px}
+.box h3{margin:0 0 8px;font-size:15px;color:var(--acc)}
+.seviye{text-align:center;font-size:13px;color:var(--mut)}
+.seviye b{color:var(--text)}
+.bitki{text-align:center;font-size:54px;line-height:1;margin-top:6px;transition:transform .3s}
+.zipla{animation:zip .6s}
+@keyframes zip{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-14px) scale(1.25)}}
+.glassw{display:flex;justify-content:center;margin-top:8px}
+.glass{position:relative;width:170px;height:210px;border:3px solid #ffffff66;border-top:none;border-radius:0 0 46px 46px;overflow:hidden;background:#ffffff0f}
+.su{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,var(--acc),var(--acc2));transition:height .8s cubic-bezier(.2,.8,.2,1)}
+.su::before{content:"";position:absolute;left:-50%;top:-14px;width:200%;height:28px;background:var(--acc);border-radius:45%;animation:dalga 4s linear infinite;opacity:.9}
+@keyframes dalga{to{transform:translateX(25%)}}
+.num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-shadow:0 2px 6px #0007}
+.num b{font-size:40px}.num small{font-size:13px;opacity:.9}
+.mesaj{text-align:center;margin:10px 0 4px;min-height:22px}
+.duraklar{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.durak{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 10px;font:inherit;font-size:13px;color:var(--text);cursor:pointer}
+.durak.ok{border-color:var(--ok);color:var(--ok)}
+.durak.simdi{border-color:var(--acc);box-shadow:0 0 10px #4dd0ff66}
+.durak.kacti{opacity:.6}
+.cups{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.cup{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 2px;color:var(--text);font:inherit;cursor:pointer;text-align:center}
+.cup:active{transform:scale(.94)}
+.cup span{display:block;font-size:22px}.cup small{color:var(--mut);font-size:12px}
+.btn{display:block;width:100%;margin-top:12px;background:linear-gradient(90deg,var(--acc2),var(--acc));border:0;color:#04223c;font:inherit;font-weight:700;padding:13px;border-radius:14px;cursor:pointer}
+.btn.k{background:var(--card);border:1px solid var(--line);color:var(--text);font-weight:500}
+.hint{color:var(--mut);font-size:13px;text-align:center;margin:8px 0 0}
+.ipucu{font-size:14px;line-height:1.5}
+.gorev{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.gorev:last-child{border-bottom:0}
+.gorev input{width:22px;height:22px;accent-color:var(--acc)}
+.gorev.bitti span{text-decoration:line-through;opacity:.55}
+.gorev button{margin-left:auto;background:none;border:0;color:var(--mut);font-size:18px;cursor:pointer}
+.satir{display:flex;gap:8px;margin-top:10px}
+input[type=text],input[type=number],input[type=time],select{width:100%;background:var(--card);border:1px solid var(--line);color:var(--text);font:inherit;font-size:16px;padding:11px;border-radius:12px}
+select option{background:#0b2a4a}
+label.lb{display:block;font-size:12px;color:var(--mut);margin-top:12px}
+label.ck{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:14px}
+label.ck input{width:20px;height:20px;accent-color:var(--acc)}
+.bars{display:flex;align-items:flex-end;gap:8px;height:130px;margin-top:8px}
+.bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bar i{display:block;width:100%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--acc),var(--acc2));min-height:3px}
+.bar i.ok{background:linear-gradient(180deg,#8cf0b8,var(--ok))}
+.bar small{font-size:11px;color:var(--mut);margin-top:4px}
+.stat{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.stat div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.stat b{display:block;font-size:26px;color:var(--acc)}.stat small{color:var(--mut);font-size:12px}
+.bahce{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:6px;text-align:center;font-size:24px}
+.bahce span.bugun{outline:2px solid var(--acc);border-radius:8px}
+.rozetler{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rozet{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 4px;text-align:center;font-size:12px}
+.rozet span{display:block;font-size:28px}
+.rozet.kilit{opacity:.35;filter:grayscale(1)}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:4px;padding:6px 10px calc(6px + env(safe-area-inset-bottom));background:#071f38;border-top:1px solid var(--line)}
+nav button{flex:1;border:0;background:none;color:var(--mut);font:inherit;font-size:11px;padding:6px 2px;border-radius:10px;cursor:pointer}
+nav button span{display:block;font-size:22px}
+nav button.on{color:var(--acc);background:#ffffff14}
+#toast{position:fixed;left:16px;right:16px;top:calc(12px + env(safe-area-inset-top));max-width:480px;margin:0 auto;background:#04223c;border:1px solid var(--acc);border-radius:14px;padding:12px 14px;z-index:9;display:none}
+.hsec{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:6px 0}
+.hsec button{background:var(--card);border:1px solid var(--line);color:var(--text);font:inherit;font-size:13px;padding:6px 11px;border-radius:999px;cursor:pointer}
+.hsec button.on{background:linear-gradient(90deg,var(--acc2),var(--acc));color:#04223c;font-weight:700;border-color:transparent}
+.bnav{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.bnav button{background:var(--card);border:1px solid var(--line);color:var(--text);font-size:18px;width:46px;height:38px;border-radius:12px;cursor:pointer}
+.bnav span{font-size:12px;opacity:.7}
+.hk{text-align:center;background:linear-gradient(170deg,#0f3d6b,#0b2a4a 60%);border-color:#5ec8ff55}
+.hdrop{font-size:58px;animation:hz 1.6s ease-in-out infinite;filter:drop-shadow(0 6px 14px #5ec8ff88)}
+@keyframes hz{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.08)}}
+.hl{margin:4px 0 0;opacity:.8;font-size:14px;letter-spacing:.5px}
+.hnum{margin:2px 0 6px}.hnum b{font-size:64px;line-height:1.1;background:linear-gradient(180deg,#bdeaff,#4cb8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hnum small{font-size:20px;margin-left:6px;opacity:.8}
+.hbar{margin:0 0 8px;font-size:14px;opacity:.85}
+.hmsg{margin:0 0 4px;font-size:15px;line-height:1.5}
+.ovl{position:fixed;inset:0;background:#031526ee;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px}
+.ovl .kart{background:#0b2a4a;border:1px solid var(--line);border-radius:20px;padding:20px;max-width:420px;width:100%}
+.ovl h2{margin:0 0 6px;font-size:20px}
+.konfeti{position:fixed;top:-20px;font-size:24px;pointer-events:none;z-index:15;animation:dus 2.2s ease-in forwards}
+@keyframes dus{to{transform:translateY(105vh) rotate(360deg);opacity:.2}}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+
+<div id="hpop" class="ovl hide"><div class="kart hk">
+  <div class="hdrop">💧</div>
+  <p class="hl" id="hpBas">Bugünkü hedefin</p>
+  <div class="hnum"><b id="hpMl">0</b><small>ml</small></div>
+  <p class="hbar" id="hpBar"></p>
+  <p class="hmsg" id="hpMsg"></p>
+  <button class="btn" id="hpTamam">Hadi başlayalım 💪</button>
+</div></div>
+
+<div id="hatpop" class="ovl hide"><div class="kart">
+  <h2>🔔 Hatırlatıcı</h2>
+  <label class="lb" style="margin-top:6px">Kaç saatte bir hatırlatalım?</label>
+  <div class="hsec" id="hSik"></div>
+  <div class="satir"><div style="flex:1"><label class="lb" style="margin-top:0">Başlangıç</label><input type="time" id="hBas"></div><div style="flex:1"><label class="lb" style="margin-top:0">Bitiş</label><input type="time" id="hBit"></div></div>
+  <p class="hint" id="hOzet" style="margin-top:10px"></p>
+  <button class="btn" id="hKaydet">Hatırlatıcıyı aç</button>
+  <button class="btn k" id="hKapat">Kapat / Vazgeç</button>
+</div></div>
+
+<div id="tebrik" class="ovl hide"><div class="kart" style="text-align:center">
+  <div style="font-size:54px" id="tbE">🎉</div>
+  <h2>Hedefi tamamladın!</h2>
+  <p id="tbS" style="font-size:15px;line-height:1.5"></p>
+  <p class="hint" id="tbL"></p>
+  <button class="btn" id="tbIleri"></button>
+  <button class="btn k" id="tbKal">Aynı hedefte kalayım</button>
+</div></div>
+
+<div id="kurulum" class="ovl hide"><div class="kart">
+  <h2>💧 Hoş geldin!</h2>
+  <p class="hint" style="text-align:left;margin:0 0 6px">Şu an gün içinde yaklaşık ne kadar su içiyorsun? Hedefini buna göre küçük başlatıp adım adım artıracağız. Dürüst cevap ver, yargılamıyoruz 😊</p>
+  <button class="btn k" data-ml="400">Neredeyse hiç (yarım bardak)</button>
+  <button class="btn k" data-ml="600">1-2 bardak</button>
+  <button class="btn k" data-ml="1000">3-4 bardak</button>
+  <button class="btn k" data-ml="1400">5-6 bardak</button>
+</div></div>
+
+<div class="wrap">
+  <h1>🌱 Nevinay</h1>
+  <p class="sub" id="selam"></p>
+
+  <section id="v_bugun">
+    <p class="seviye" id="seviye"></p>
+    <div class="hsec" id="hsec"></div>
+    <div class="bitki" id="bitki">🌱</div>
+    <div class="glassw"><div class="glass"><div class="su" id="su"></div><div class="num"><b id="ml">0</b><small>/ <span id="hedef"></span> ml</small></div></div></div>
+    <p class="mesaj" id="mesaj"></p>
+    <div class="box hatk" id="hatKapali"><h3>🔔 Su hatırlatıcısı</h3><p class="hint" style="margin:0 0 4px">Kapalı. Açarsan her gün seçtiğin saatlerde su içmeyi hatırlatır.</p><button class="btn" id="hatAc">🔔 Hatırlatıcıyı aç</button></div>
+    <div id="hatAcik"><div class="duraklar" id="duraklar"></div>
+    <p class="hint" id="durakNot">Su durağında dokun: 150 ml eklenir · <a href="#" id="hatAyar" style="color:var(--acc)">⚙️ Ayarla</a></p></div>
+    <div class="cups" id="cups"></div>
+    <button class="btn k" id="geri">↩︎ Son eklemeyi geri al</button>
+    <p class="hint" id="siradaki"></p>
+    <div class="box"><h3>🌊 Su neden önemli?</h3><p class="ipucu" id="bilgi"></p><div class="bnav"><button id="bGeri" aria-label="Önceki">◀</button><span id="bNo"></span><button id="bIleri" aria-label="Sonraki">▶</button></div></div>
+    <div class="box"><h3>💡 Günün ipucu</h3><p class="ipucu" id="ipucu"></p></div>
+  </section>
+
+  <section id="v_gorev" class="hide">
+    <div class="box"><h3>🎯 Bugünün görevleri</h3><div id="gorevler"></div><p class="hint" id="gorevOzet"></p></div>
+    <div class="box"><h3>➕ Kendi görevlerim</h3><div id="ozel"></div>
+      <div class="satir"><input type="text" id="yeni" placeholder="Yeni görev (her gün görünür)" maxlength="50"><button class="btn" id="ekle" style="margin:0;width:auto;padding:0 18px">Ekle</button></div></div>
+  </section>
+
+  <section id="v_stat" class="hide">
+    <div class="stat"><div><b id="seri">0</b><small>gün seri 🔥</small></div><div><b id="toplam">0</b><small>toplam litre</small></div></div>
+    <div class="box"><h3>🌼 Bahçem (son 21 gün)</h3><div class="bahce" id="bahce"></div><p class="hint">🌸 hedef tamam · 🌿 yarıdan fazla · 🌱 biraz · 🥀 hiç içilmeyen gün</p></div>
+    <div class="box"><h3>Son 7 gün</h3><div class="bars" id="bars"></div><p class="hint">Yeşil çubuk: hedefe ulaştığın gün</p></div>
+    <div class="box"><h3>🏅 Rozetler</h3><div class="rozetler" id="rozetler"></div></div>
+  </section>
+
+  <section id="v_ayar" class="hide">
+    <div class="box"><h3>🎯 Hedef</h3>
+      <label class="lb">Bugünkü hedefim (ml)</label><input type="number" id="aHedef" min="200" max="6000" step="50">
+      <label class="lb">Ulaşmak istediğim hedef (ml)</label><input type="number" id="aNihai" min="500" max="6000" step="50">
+      <label class="lb">Kilon (isteğe bağlı: ulaşılacak hedefi hesaplar, kilo × 33 ml)</label><input type="number" id="aKilo" min="20" max="250" placeholder="örn. 65">
+      <label class="ck"><input type="checkbox" id="aKademeli"> Hedefi tutturunca sonraki seviyeyi öner (+500 ml)</label>
+    </div>
+    <div class="box"><h3>⏰ Hatırlatma</h3>
+      <div class="satir"><div style="flex:1"><label class="lb" style="margin-top:0">Başlangıç</label><input type="time" id="aBas"></div><div style="flex:1"><label class="lb" style="margin-top:0">Bitiş</label><input type="time" id="aBit"></div></div>
+      <label class="lb">Sıklık</label><select id="aAralik"><option value="60">Her saat</option><option value="120">Her 2 saatte</option><option value="180">Her 3 saatte (önerilen)</option><option value="240">Her 4 saatte</option></select>
+      <label class="ck"><input type="checkbox" id="aHatirlat"> Su hatırlatmaları açık (uyarı + titreşim + bildirim)</label>
+      <label class="ck"><input type="checkbox" id="aTitresim"> Uygulama açıkken titreşim (Android)</label>
+      <button class="btn" id="takvim">📅 Hatırlatmaları telefonun takvimine ekle</button>
+      <p class="hint">Uygulama kapalıyken bile telefonun kendi alarmıyla hatırlatır. Dosyayı açınca "Takvime ekle" de. Alarm sesi/titreşimi telefonun takvim ayarlarına bağlıdır.</p>
+      <button class="btn k" id="bildirim">🔔 Uygulama açıkken bildirim de gönder</button>
+      <p class="hint" id="bildirimDurum"></p>
+    </div>
+    <button class="btn" id="kaydet">Kaydet</button>
+    <button class="btn k" id="tekrar">Başlangıç sorusunu tekrar sor</button>
+    <p class="hint">Verilerin yalnızca bu telefonda saklanır.</p>
+  </section>
+</div>
+
+<nav id="nav">
+  <button data-v="bugun" class="on"><span>💧</span>Bugün</button>
+  <button data-v="gorev"><span>🎯</span>Görevler</button>
+  <button data-v="stat"><span>🌼</span>Bahçem</button>
+  <button data-v="ayar"><span>⚙️</span>Ayarlar</button>
+</nav>
+
+<script>
+const $=id=>document.getElementById(id);
+const S=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+const W=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const GUN_ADLARI=["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+const anahtar=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const bugun=()=>anahtar(new Date());
+const dun=()=>{const d=new Date();d.setDate(d.getDate()-1);return anahtar(d)};
+// küçük miktarlar da sayılır: az içen biri için "yudum" ve "yarım bardak" var
+const BARDAK=[[50,"💧","yudum"],[100,"🥄","yarım bardak"],[200,"🥛","bardak"],[330,"🧃","büyük bardak"],[500,"🍶","şişe"]];
+const GOREV_HAVUZU=["Güne bir bardak suyla başla.","Öğle yemeğinden önce bir bardak su iç.","Bugün 10 dakika yürüyüş yap.","Şekerli bir içeceği suyla değiştir.","Yanında su şişesi taşı.","Akşam yemeğinden önce bir bardak su iç.","Bir meyve ya da sebze ye.","3 dakika esneme molası ver.","Gün içinde 3 derin nefes molası ver.","Uyumadan bir saat önce ekranı kapat.","Bir arkadaşına 'su içtin mi?' diye sor.","Kahve yerine bir bardak su ya da bitki çayı iç.","Su şişeni doldur ve masana koy.","Bir bardak suyu yudum yudum, yavaşça iç.","Merdivenleri kullan.","Suya bir dilim limon ya da salatalık ekle.","Yemekle birlikte az, yemekten bir süre sonra bol su iç.","Bir bardak su içip bir şey için şükret.","Bugün ekran başında her saat ayağa kalk.","Sabah uyanır uyanmaz bir bardak su iç."];
+const IPUCLARI=["Susuzluk hissetmeden önce içmeye başla: susamak geç bir işarettir.","Su şişeni gözünün önüne koy; görünen su daha çok içilir.","Her öğünün yanında bir bardak su iç, alışkanlık böyle oturur.","Yavaş yavaş, yudum yudum iç; hızlı içince vücut o kadar tutmaz.","Düz suyu sevmiyorsan limon, nane ya da salatalık dilimi ekle.","Uyandığında ilk iş bir bardak su: gece boyunca susuz kaldın.","Telefonuna her 3 saatte alarm kurmak en kolay alışkanlıktır.","Bir günde birden fazla başarısız olursan sorun değil, yarın yeni bir gün.","Küçük hedefler büyüğünden daha çok tutulur: önce yarım bardağı yenile.","Çay ve kahve de sayılır ama suyun yerini tutmaz; arasına su ekle.","Baş ağrısı ya da yorgunluk bazen az su içmenin habercisidir.","Şeker yerine soğuk su iç: iç ferahlığın daha uzun sürer.","Meyve ve sebzeler de sıvı verir: karpuz, salatalık, portakal.","Su içince kendini ödüllendir: bitkin büyüyor 🌱"];
+const BITKI=[[0,"🌱"],[25,"🌿"],[50,"🪴"],[75,"🌷"],[100,"🌸"]];
+const MOTIVASYON=[[0,"Haydi, ilk yudumla başlayalım 💧"],[25,"Güzel başlangıç, devam!"],[50,"Yarıladın! Böyle devam 💪"],[75,"Neredeyse tamam, az kaldı!"],[100,"Hedefe ulaştın! Harikasın 🎉"]];
+const SEVIYELER=[[0,"Filiz 🌱"],[800,"Fidan 🌿"],[1200,"Çiçek 🌸"],[1600,"Ağaç 🌳"],[2000,"Orman 🌲"]];
+
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){let a=seed;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+// ---- veri ----
+let ayar=Object.assign({hedef:600,nihai:2000,kilo:null,bas:"09:00",bit:"21:00",aralik:180,bildirim:false,titresim:true,kademeli:true,hatirlatAc:false,kurulum:false,ardisik:0,sonBasari:"",seviye:0,gh:{}},S("su_ayar",{}));
+let kayit=S("su_kayit",{});          // {gun:[{t,ml}]}
+let ozel=S("su_ozel",[]);
+let bitenler=S("su_biten",{});
+const toplamMl=g=>(kayit[g]||[]).reduce((t,x)=>t+x.ml,0);
+// Her günün hedefi o gün başında sabitlenir: seviye atlayınca hedef ertesi gün değişir
+if(!ayar.gh[bugun()]){ayar.gh[bugun()]=ayar.hedef;W("su_ayar",ayar)}
+const hedefOf=g=>ayar.gh[g]||ayar.hedef;
+
+function selam(){const h=new Date().getHours();return(h<6?"İyi geceler":h<12?"Günaydın":h<18?"İyi günler":"İyi akşamlar")+" 👋"}
+function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(toast.z);toast.z=setTimeout(()=>t.style.display="none",4000)}
+function konfeti(){for(let i=0;i<18;i++){const s=document.createElement("span");s.className="konfeti";s.textContent=["💧","✨","🌸","💙"][i%4];s.style.left=Math.random()*95+"%";s.style.animationDelay=Math.random()*.6+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+
+// ---- bugün ----
+function seviyeAdi(h){return SEVIYELER.filter(s=>h>=s[0]).pop()[1]}
+function ciz(){
+  const hedef=hedefOf(bugun()),ml=toplamMl(bugun()),y=Math.min(100,Math.round(ml/hedef*100));
+  $("ml").textContent=ml;$("hedef").textContent=hedef;$("su").style.height=y+"%";
+  $("mesaj").textContent=MOTIVASYON.filter(m=>y>=m[0]).pop()[1];
+  $("bitki").textContent=ml===0?"🥀":BITKI.filter(b=>y>=b[0]).pop()[1];
+  if(ml===0)$("bitki").textContent="🌱";
+  const kalan=ardisikSayi()?" · seri "+ardisikSayi()+" gün":"";
+  $("seviye").innerHTML="Seviye: <b>"+seviyeAdi(ayar.hedef)+"</b> · hedef "+ayar.hedef+" ml"+kalan;
+  const son=(kayit[bugun()]||[]).slice(-1)[0];
+  $("siradaki").textContent=son?"Son su: "+new Date(son.t).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"}):"Bugün henüz su içmedin.";
+  $("geri").classList.toggle("hide",!(kayit[bugun()]||[]).length);
+  durakCiz();hedefSecCiz();
+}
+const ardisikSayi=()=>ayar.sonBasari===bugun()||ayar.sonBasari===dun()?ayar.ardisik:0;
+function suEkle(ml){
+  const once=toplamMl(bugun()),hedef=hedefOf(bugun());
+  (kayit[bugun()]=kayit[bugun()]||[]).push({t:Date.now(),ml});W("su_kayit",kayit);
+  $("bitki").classList.remove("zipla");void $("bitki").offsetWidth;$("bitki").classList.add("zipla");
+  if(navigator.vibrate)navigator.vibrate(30);
+  if(once<hedef&&toplamMl(bugun())>=hedef)hedefTamam();
+  ciz();istatistik();
+}
+const SOZLER=["Harikasın! Vücudun sana teşekkür ediyor 💙","Küçük adımlar büyük alışkanlık olur. Bugün bunu kanıtladın!","Bugün kendine iyi baktın. Bununla gurur duy 🌟","Su içmek kolay değildi ama sen başardın!","Bir damla bir damla göl olur. Sen bugün gölü doldurdun 🌊","Disiplin motivasyondan güçlüdür. Bugün disiplinli oldun!","Cildin, beynin ve enerjin bugün sana minnettar ✨","Dün başlamak zordu, bugün zirvedesin. Böyle devam!","Kendine verdiğin sözü tuttun. Bu çok değerli 💪","Bugünün kahramanı sensin 🏆"];
+const BILGILER=["💧 Vücudunun yaklaşık %60'ı sudur. Her hücren çalışmak için suya ihtiyaç duyar.","🧠 Beynin yaklaşık %75 sudur. Az su içince dikkat dağılır, baş ağrısı ve yorgunluk artar.","😴 Hafif susuzluk bile enerjini düşürür. Sürekli yorgunsan ilk bakacağın şey suyun olsun.","🥵 Az su içince baş ağrısı, baş dönmesi ve dikkat kaybı yaşarsın.","✨ Yeterli su cildini nemli ve canlı tutar. Susuz kalınca cilt kuru ve solgun görünür.","🚽 Az su içmek böbrek taşı ve idrar yolu enfeksiyonu riskini artırır. Böbreklerin suyla temizlenir.","🍽️ Sindirimin suya ihtiyaç duyar. Az su içince kabızlık ve şişkinlik yaşarsın.","🏃 Kasların su kaybedince çabuk yorulur ve kramp girer. Hareket edecekse önce su iç.","🌡️ Su vücut ısını dengeler. Sıcakta ya da hastayken ihtiyacın daha da artar.","🍫 Susuzluk çoğu zaman açlık gibi hissedilir. Atıştırmadan önce bir bardak su iç.","🦴 Eklemlerin suyla kayganlaşır. Susuzluk eklem ağrılarını artırır.","💬 Ağız kuruluğu ve nefes kokusu çoğu zaman az su içmenin işaretidir.","❤️ Yeterli su kalbin işini kolaylaştırır: kan daha rahat dolaşır.","🌙 Gün içinde az su içmek geceleri kötü uyumana da yol açar.","🧊 Soğuk su içmek zorunda değilsin. Oda sıcaklığındaki su da aynı işi görür, bazı insanlar için midesine daha rahat gelir.","🍋 Sabah bir bardak ılık su sindirim sistemini uyandırır.","⏰ Susadığını hissettiğinde vücudun zaten biraz su kaybetmiştir. Susamadan, gün içine yayarak iç.","🏋️ Spor yaparken terle birlikte su kaybedersin. Sporun öncesinde, sırasında ve sonrasında su iç.","🧒 Çocuklar ve yaşlılar susuzluğu geç fark eder. Onlara su içmeyi hatırlatmak önemlidir.","🌞 Sıcak havada, kalabalık ve kapalı yerlerde su ihtiyacın artar. Yanında şişe taşı.","🥤 Gazlı ve şekerli içecekler susuzluğu geçirmez, artırır. Suyun yerini tutmazlar.","☕ Kafein hafif idrar söktürür. Her kahveden sonra bir bardak su içmek iyi bir alışkanlıktır.","🍎 Gün içinde aldığın suyun yaklaşık beşte biri yiyeceklerden gelir. Meyve ve sebze yemek de su içmektir.","🧴 Cildin için en ucuz bakım su içmektir. Kremler dışarıdan nemlendirir, su içeriden.","👀 İdrar rengin ipucu verir: açık sarıysa iyisin, koyu sarıysa daha çok su içmelisin.","💪 Su, besinleri ve oksijeni hücrelerine taşıyan kanın önemli bir parçasıdır.","🧠 Hafif susuzluk bile ruh halini bozar, seni huzursuz ve sinirli yapar.","🌱 Su içmek bir alışkanlıktır. Yaklaşık iki üç hafta düzenli yaparsan kendiliğinden gelmeye başlar.","🛌 Yatmadan hemen önce çok su içmek uykunu böler. Akşam miktarı biraz azalt, gün içinde tamamla.","🥄 Çorba, çay, ayran, bitki çayı da sıvı alımına katkı sağlar. Hepsi hedefine yardım eder."];
+const HMSG=["Küçük adım, büyük fark. Başlıyoruz!","Sen yaparsın, vücudun sana teşekkür edecek 💙","Bir yudum bir yudum, hedef senin 🌊","Bugün kendine iyi bak. Bir bardakla başla!"];
+function hedefPop(v,yarin){
+  $("hpBas").textContent=yarin?"Yarınki hedefin":"Bugünkü hedefin";$("hpMl").textContent=v;
+  $("hpBar").textContent="≈ "+Math.round(v/200*10)/10+" bardak";
+  $("hpMsg").textContent=HMSG[Math.floor(Math.random()*HMSG.length)];
+  $("hpTamam").textContent=yarin?"Tamam 💙":"Hadi başlayalım 💪";
+  $("hpop").classList.remove("hide");
+}
+$("hpTamam").onclick=()=>$("hpop").classList.add("hide");
+const YOLLAR=[500,750,1000,1250,1500,1750,2000,2500];
+function sonraki(){return Math.min(ayar.nihai,ayar.hedef+500)}
+function hedefSecCiz(){
+  const bitti=toplamMl(bugun())>=hedefOf(bugun());
+  const l=YOLLAR.slice();if(!l.includes(ayar.hedef))l.push(ayar.hedef);l.sort((x,y)=>x-y);
+  $("hsec").innerHTML="";
+  l.forEach(v=>{const b=document.createElement("button");b.textContent=v+" ml";if(v===ayar.hedef)b.className="on";
+    b.onclick=()=>{ayar.hedef=v;if(!bitti)ayar.gh[bugun()]=v;W("su_ayar",ayar);ayarYukle();ciz();hedefPop(v,bitti)};
+    $("hsec").appendChild(b)});
+}
+function hedefTamam(){
+  konfeti();
+  if(ayar.sonBasari!==bugun()){
+    ayar.ardisik=ayar.sonBasari===dun()?(ayar.ardisik||0)+1:1;ayar.sonBasari=bugun();W("su_ayar",ayar);
+  }
+  $("tbS").textContent=SOZLER[Math.floor(Math.random()*SOZLER.length)];
+  $("tbL").textContent="Hedefin: "+hedefOf(bugun())+" ml · Seri: "+ayar.ardisik+" gün";
+  const n=sonraki(),var_=ayar.kademeli&&n>ayar.hedef;
+  $("tbIleri").style.display=var_?"block":"none";
+  $("tbIleri").textContent="Sonraki seviye: "+n+" ml (yarından)";
+  $("tbKal").textContent=var_?"Aynı hedefte kalayım":"Tamam 💙";
+  $("tebrik").classList.remove("hide");
+}
+$("tbIleri").onclick=()=>{ayar.hedef=sonraki();ayar.seviye=(ayar.seviye||0)+1;W("su_ayar",ayar);$("tebrik").classList.add("hide");ayarYukle();ciz();toast("🆙 Seviye atladın! Yarın hedefin "+ayar.hedef+" ml")};
+$("tbKal").onclick=()=>$("tebrik").classList.add("hide");
+let bi=hash("bilgi|"+bugun())%BILGILER.length;
+function bilgiCiz(){$("bilgi").textContent=BILGILER[bi];$("bNo").textContent=(bi+1)+" / "+BILGILER.length}
+$("bIleri").onclick=()=>{bi=(bi+1)%BILGILER.length;bilgiCiz()};
+$("bGeri").onclick=()=>{bi=(bi+BILGILER.length-1)%BILGILER.length;bilgiCiz()};
+BARDAK.forEach(([ml,e,ad])=>{const b=document.createElement("button");b.className="cup";b.innerHTML=`<span>${e}</span><small>${ad} · ${ml} ml</small>`;b.onclick=()=>suEkle(ml);$("cups").appendChild(b)});
+{const b=document.createElement("button");b.className="cup";b.innerHTML="<span>✏️</span><small>başka miktar</small>";b.onclick=()=>{const v=parseInt(prompt("Kaç ml içtin?","250"),10);if(v>0&&v<=2000)suEkle(v)};$("cups").appendChild(b)}
+$("geri").onclick=()=>{const l=kayit[bugun()]||[];if(l.length){l.pop();W("su_kayit",kayit);ciz();istatistik()}};
+
+// ---- su durakları (her aralıkta bir): hatırlatma saatleri aynı zamanda günün durakları ----
+function saatler(){const [bh,bm]=ayar.bas.split(":").map(Number),[eh,em]=ayar.bit.split(":").map(Number),out=[];for(let t=bh*60+bm;t<=eh*60+em;t+=ayar.aralik)out.push(t);return out}
+function duraklar(){
+  const s=saatler(),log=kayit[bugun()]||[],g0=new Date();g0.setHours(0,0,0,0);const o=g0.getTime();
+  return s.map((t,i)=>{const bas=o+t*60000,bit=i<s.length-1?o+s[i+1]*60000:bas+ayar.aralik*60000,yapildi=log.some(x=>x.t>=bas&&x.t<bit),n=Date.now();
+    return{t,yapildi,durum:yapildi?"ok":n<bas?"bekle":n<bit?"simdi":"kacti"}});
+}
+function durakCiz(){
+  $("hatKapali").classList.toggle("hide",!!ayar.hatirlatAc);$("hatAcik").classList.toggle("hide",!ayar.hatirlatAc);
+  if(!ayar.hatirlatAc)return;
+  const p=n=>String(n).padStart(2,"0");
+  $("duraklar").replaceChildren(...duraklar().map(d=>{const b=document.createElement("button");b.className="durak "+d.durum;
+    b.textContent=({ok:"✅",simdi:"💧",bekle:"⏳",kacti:"•"})[d.durum]+" "+p(Math.floor(d.t/60))+":"+p(d.t%60);
+    b.onclick=()=>{if(!d.yapildi)suEkle(150)};return b}));
+}
+
+// ---- hatırlatıcı penceresi ----
+let hSec=180;
+const SIKLAR=[[60,"Her saat"],[120,"2 saatte bir"],[180,"3 saatte bir"],[240,"4 saatte bir"]];
+function hOzet(){const n=(()=>{const [bh,bm]=$("hBas").value.split(":").map(Number),[eh,em]=$("hBit").value.split(":").map(Number);let c=0;for(let t=bh*60+bm;t<=eh*60+em;t+=hSec)c++;return c})();$("hOzet").textContent="Günde "+n+" kez hatırlatır. Uygulama açıkken uyarı ve titreşim (Android), kapalıyken takvim alarmı için Ayarlar'a bak."}
+function hCiz(){$("hSik").innerHTML="";SIKLAR.forEach(([v,ad])=>{const b=document.createElement("button");b.textContent=ad;if(v===hSec)b.className="on";b.onclick=()=>{hSec=v;hCiz();hOzet()};$("hSik").appendChild(b)})}
+function hAc(){hSec=ayar.aralik||180;$("hBas").value=ayar.bas;$("hBit").value=ayar.bit;$("hKapat").textContent=ayar.hatirlatAc?"Hatırlatıcıyı kapat":"Vazgeç";$("hKaydet").textContent=ayar.hatirlatAc?"Kaydet":"Hatırlatıcıyı aç";hCiz();hOzet();$("hatpop").classList.remove("hide")}
+$("hatAc").onclick=hAc;$("hatAyar").onclick=e=>{e.preventDefault();hAc()};
+$("hBas").onchange=$("hBit").onchange=hOzet;
+$("hKaydet").onclick=()=>{ayar.aralik=hSec;ayar.bas=$("hBas").value||"09:00";ayar.bit=$("hBit").value||"21:00";ayar.hatirlatAc=true;W("su_ayar",ayar);$("hatpop").classList.add("hide");ayarYukle();durakCiz();if(navigator.vibrate)navigator.vibrate(200);toast("🔔 Hatırlatıcı açık: "+SIKLAR.find(x=>x[0]===hSec)[1].toLowerCase())};
+$("hKapat").onclick=()=>{if(ayar.hatirlatAc){ayar.hatirlatAc=false;W("su_ayar",ayar);ayarYukle();durakCiz();toast("Hatırlatıcı kapatıldı")}$("hatpop").classList.add("hide")};
+
+// ---- görevler ----
+function gunGorevleri(){const r=rng(hash("gorev|"+bugun())),h=GOREV_HAVUZU.map((t,i)=>i),s=[];for(let k=0;k<3;k++)s.push(h.splice(Math.floor(r()*h.length),1)[0]);return s.map(i=>({id:"h"+i,t:GOREV_HAVUZU[i]}))}
+function gorevSatir(g,sil){
+  const biten=(bitenler[bugun()]||[]).includes(g.id),d=document.createElement("div");d.className="gorev"+(biten?" bitti":"");
+  d.innerHTML=`<input type="checkbox" ${biten?"checked":""}><span></span>`;d.querySelector("span").textContent=g.t;
+  d.querySelector("input").onchange=e=>{const l=bitenler[bugun()]=bitenler[bugun()]||[];if(e.target.checked)l.push(g.id);else l.splice(l.indexOf(g.id),1);W("su_biten",bitenler);gorevCiz();
+    if(e.target.checked&&gunGorevleri().every(x=>l.includes(x.id))){konfeti();toast("🎉 Bugünün 3 görevini tamamladın!")}};
+  if(sil){const b=document.createElement("button");b.textContent="✕";b.onclick=()=>{ozel=ozel.filter(x=>x.id!==g.id);W("su_ozel",ozel);gorevCiz()};d.appendChild(b)}
+  return d;
+}
+function gorevCiz(){
+  $("gorevler").replaceChildren(...gunGorevleri().map(g=>gorevSatir(g,false)));
+  $("ozel").replaceChildren(...ozel.map(g=>gorevSatir(g,true)));
+  const l=bitenler[bugun()]||[];$("gorevOzet").textContent=gunGorevleri().filter(g=>l.includes(g.id)).length+"/3 günlük görev tamam";
+}
+$("ekle").onclick=()=>{const t=$("yeni").value.trim();if(!t)return;ozel.push({id:"o"+Date.now(),t});W("su_ozel",ozel);$("yeni").value="";gorevCiz()};
+
+// ---- bahçe, istatistik, rozetler ----
+function tamam(g){return toplamMl(g)>0&&toplamMl(g)>=hedefOf(g)}
+function istatistik(){
+  let seri=0,d=new Date();if(!tamam(anahtar(d)))d.setDate(d.getDate()-1);
+  while(tamam(anahtar(d))){seri++;d.setDate(d.getDate()-1)}
+  $("seri").textContent=seri;
+  const gunler=Object.keys(kayit).sort();
+  $("toplam").textContent=(gunler.reduce((t,g)=>t+toplamMl(g),0)/1000).toFixed(1);
+  const bahce=[];for(let k=20;k>=0;k--){const x=new Date();x.setDate(x.getDate()-k);const g=anahtar(x),ml=toplamMl(g),y=ml/hedefOf(g),e=document.createElement("span");
+    e.textContent=y>=1?"🌸":y>=.5?"🌿":ml>0?"🌱":(k===0?"⏳":"🥀");if(k===0)e.className="bugun";bahce.push(e)}
+  $("bahce").replaceChildren(...bahce);
+  const bars=[];for(let k=6;k>=0;k--){const x=new Date();x.setDate(x.getDate()-k);const g=anahtar(x),ml=toplamMl(g),h=Math.min(100,ml/hedefOf(g)*100);
+    const e=document.createElement("div");e.className="bar";e.innerHTML=`<i class="${tamam(g)?"ok":""}" style="height:${h}%"></i><small>${GUN_ADLARI[x.getDay()]}</small>`;bars.push(e)}
+  $("bars").replaceChildren(...bars);
+  // en uzun seri
+  let en=0,cur=0,onceki=null;for(const g of gunler){if(!tamam(g)){cur=0;onceki=null;continue}
+    const gd=new Date(g+"T12:00:00");cur=onceki&&Math.round((gd-onceki)/864e5)===1?cur+1:1;onceki=gd;en=Math.max(en,cur)}
+  const enCok=Math.max(...gunler.map(toplamMl),0);
+  const R=[["💧","İlk yudum",gunler.length>0],["🎯","İlk hedef",gunler.some(tamam)],["🔥","3 gün seri",en>=3],["🌊","1 litre günü",enCok>=1000],["🆙","Seviye atladın",ayar.seviye>0],["🔥","7 gün seri",en>=7],["🏆","2 litre günü",enCok>=2000],["🌳","14 gün seri",en>=14],["🌲","Orman seviyesi",ayar.hedef>=2000]];
+  $("rozetler").replaceChildren(...R.map(([e,ad,ok])=>{const d=document.createElement("div");d.className="rozet"+(ok?"":" kilit");d.innerHTML=`<span>${e}</span>${ad}`;return d}));
+}
+
+// ---- ayarlar ----
+function ayarYukle(){$("aHedef").value=ayar.hedef;$("aNihai").value=ayar.nihai;$("aKilo").value=ayar.kilo||"";$("aKademeli").checked=ayar.kademeli;$("aTitresim").checked=ayar.titresim;$("aHatirlat").checked=ayar.hatirlatAc;$("aBas").value=ayar.bas;$("aBit").value=ayar.bit;$("aAralik").value=ayar.aralik;bildirimDurum()}
+$("aKilo").oninput=()=>{const k=+$("aKilo").value;if(k>=20)$("aNihai").value=Math.round(k*33/50)*50};
+$("kaydet").onclick=()=>{
+  const yeni=Math.max(200,+$("aHedef").value||600);if(yeni!==ayar.hedef){ayar.gh[bugun()]=yeni}
+  ayar.hedef=yeni;ayar.nihai=Math.max(ayar.hedef,+$("aNihai").value||2000);ayar.kilo=+$("aKilo").value||null;ayar.kademeli=$("aKademeli").checked;ayar.titresim=$("aTitresim").checked;ayar.hatirlatAc=$("aHatirlat").checked;
+  ayar.bas=$("aBas").value||"09:00";ayar.bit=$("aBit").value||"21:00";ayar.aralik=+$("aAralik").value;W("su_ayar",ayar);ciz();istatistik();toast("Kaydedildi ✅")};
+$("tekrar").onclick=()=>{$("kurulum").classList.remove("hide")};
+// Takvim dosyası (.ics): her hatırlatma saati için günlük tekrarlayan, alarmlı etkinlik
+$("takvim").onclick=()=>{
+  ayar.bas=$("aBas").value||ayar.bas;ayar.bit=$("aBit").value||ayar.bit;ayar.aralik=+$("aAralik").value;W("su_ayar",ayar);
+  const p=n=>String(n).padStart(2,"0"),d=new Date(),gun=d.getFullYear()+p(d.getMonth()+1)+p(d.getDate());
+  const ol=saatler().map((t,i)=>["BEGIN:VEVENT","UID:damla-"+i+"-"+Date.now()+"@damla","DTSTAMP:"+gun+"T000000","DTSTART:"+gun+"T"+p(Math.floor(t/60))+p(t%60)+"00","DURATION:PT5M","RRULE:FREQ=DAILY","SUMMARY:💧 Su iç!","DESCRIPTION:Su durağı: bir bardak su içme zamanı.","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:💧 Su iç!","TRIGGER:PT0S","END:VALARM","END:VEVENT"].join("\r\n"));
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Nevinay//TR","CALSCALE:GREGORIAN",...ol,"END:VCALENDAR"].join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));a.download="damla-hatirlaticilar.ics";document.body.appendChild(a);a.click();a.remove();
+  toast("Dosya indi: açıp 'Takvime ekle' de");
+};
+function bildirimDurum(){$("bildirimDurum").textContent=!("Notification" in window)?"Bu tarayıcı bildirimi desteklemiyor.":Notification.permission==="granted"?"Bildirimler açık (uygulama açıkken çalışır).":Notification.permission==="denied"?"Bildirim izni kapalı; telefon ayarlarından açabilirsin.":"Bildirim izni henüz verilmedi."}
+$("bildirim").onclick=async()=>{if(!("Notification" in window))return bildirimDurum();const r=await Notification.requestPermission();ayar.bildirim=r==="granted";W("su_ayar",ayar);bildirimDurum()};
+// Uygulama açıkken: son sudan beri aralık geçtiyse hatırlat (titreşim + bildirim)
+function kontrol(){
+  if(!ayar.hatirlatAc)return;
+  const now=new Date(),dk=now.getHours()*60+now.getMinutes(),s=saatler();if(!s.length||dk<s[0]||dk>s[s.length-1]+30)return;
+  const son=(kayit[bugun()]||[]).slice(-1)[0],sonT=son?son.t:0,sonH=S("su_sonhatirlatma",0);
+  if(Date.now()-Math.max(sonT,sonH)<ayar.aralik*60000)return;
+  W("su_sonhatirlatma",Date.now());toast("💧 Su durağı! Bir bardak su içme zamanı.");
+  if(ayar.titresim&&navigator.vibrate)navigator.vibrate([300,150,300,150,600]);
+  if(ayar.bildirim&&"Notification" in window&&Notification.permission==="granted"){try{navigator.serviceWorker.ready.then(r=>r.showNotification("💧 Su iç!",{body:"Su durağı: bir bardak su içme zamanı.",icon:"icon-192.png",vibrate:[300,150,300]}))}catch(e){}}
+  durakCiz();
+}
+
+// ---- ilk kurulum: az içen biri için küçük başla ----
+$("kurulum").onclick=e=>{const ml=e.target.dataset&&+e.target.dataset.ml;if(!ml)return;
+  ayar.hedef=ml;ayar.gh[bugun()]=ml;ayar.kurulum=true;ayar.ardisik=0;ayar.sonBasari="";W("su_ayar",ayar);
+  $("kurulum").classList.add("hide");ayarYukle();ciz();istatistik();hedefPop(ml,false)};
+if(!ayar.kurulum)$("kurulum").classList.remove("hide");
+
+// ---- gezinme ----
+function git(v){["bugun","gorev","stat","ayar"].forEach(x=>$("v_"+x).classList.toggle("hide",x!==v));document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));window.scrollTo(0,0)}
+$("nav").onclick=e=>{const b=e.target.closest("button");if(b)git(b.dataset.v)};
+
+$("selam").textContent=selam()+" · "+new Date().toLocaleDateString("tr-TR",{weekday:"long",day:"numeric",month:"long"});
+$("ipucu").textContent=IPUCLARI[hash("ipucu|"+bugun())%IPUCLARI.length];
+bilgiCiz();ayarYukle();ciz();gorevCiz();istatistik();kontrol();setInterval(()=>{kontrol();durakCiz()},60000);
+if("serviceWorker" in navigator){
+  const kontrolluydu=!!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register("sw.js").catch(()=>{});
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(kontrolluydu)location.reload()});
+}
+</script>
+</body>
+</html>
